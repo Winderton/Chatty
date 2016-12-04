@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,6 +16,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+
+import com.winderton.messenger.net.Net;
  
  public class Client extends JFrame {
  	private static final long serialVersionUID = 1L;
@@ -25,12 +28,23 @@ import javax.swing.border.EmptyBorder;
  	private int port;
 	private JTextField txtMessage;
 	private JTextArea history;
+ 	private boolean connected = false;
+ 	private Net net = null;
+ 
  	
  	public Client(String name, String address, int port) {
- 		setTitle("Messenger Client");
 		this.name = name;
 		this.address = address;
 		this.port = port;
+		net = new Net();
+		
+		connected = net.openConnection(address);
+		
+		if (!connected) { 
+			System.out.println("Connection failed.."); 
+			console("Connection failed..");
+		}
+		
 		createWindow();
 		console("Пытаюсь подключиться к: " + address + " на " + port + " порт, пользователь: " + name );
  	}
@@ -42,6 +56,7 @@ import javax.swing.border.EmptyBorder;
 			e.printStackTrace();
 		} 
 		
+		setTitle("Messenger Client");
  		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  		setSize(880, 550);
  		setLocationRelativeTo(null);
