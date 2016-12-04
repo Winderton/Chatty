@@ -1,5 +1,6 @@
 package com.winderton.messenger;
 
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -36,15 +37,13 @@ import com.winderton.messenger.net.Net;
 		this.name = name;
 		this.address = address;
 		this.port = port;
-		net = new Net();
+		net = new Net(port);
 		
 		connected = net.openConnection(address);
-		
 		if (!connected) { 
 			System.out.println("Connection failed.."); 
 			console("Connection failed..");
 		}
-		
 		createWindow();
 		console("Пытаюсь подключиться к: " + address + " на " + port + " порт, пользователь: " + name );
  	}
@@ -75,6 +74,7 @@ import com.winderton.messenger.net.Net;
  		
  		history = new JTextArea();
 		history.setEditable(false);
+		history.setFont(new Font("Arial", Font.PLAIN, 12));
 		JScrollPane scroll = new JScrollPane(history);
  		GridBagConstraints scrollConstraints = new GridBagConstraints();
 		scrollConstraints.insets = new Insets(0, 0, 5, 5);
@@ -131,4 +131,5 @@ import com.winderton.messenger.net.Net;
  		history.setCaretPosition(history.getDocument().getLength());
  		history.append(message + "\n\r");
  	}
+ 	
  }
