@@ -15,7 +15,7 @@ public class Net {
 	private int port;
 	
 	public Net(int port) {
-		
+		this.port = port;
 	}
 	
 	public boolean openConnection(String address) {
@@ -57,6 +57,7 @@ public class Net {
 				}
 			}
 		});
+		send.start();
 	}
 	
 }

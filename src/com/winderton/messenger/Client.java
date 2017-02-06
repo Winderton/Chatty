@@ -45,7 +45,7 @@ import com.winderton.messenger.net.Net;
 			console("Connection failed..");
 		}
 		createWindow();
-		console("Пытаюсь подключиться к: " + address + " на " + port + " порт, пользователь: " + name );
+		console("You are trying to connect to: " + address + ", port: " + port + ", user name: " + name );
  	}
  
  	private void createWindow() {

@@ -68,11 +68,11 @@ public class Login extends JFrame {
 		lblPort.setBounds(130, 168, 40, 16);
 		contentPane.add(lblPort);
 		
-		lblAddressDesc = new JLabel("(пр. 192.168.0.2)");
+		lblAddressDesc = new JLabel("(Ex: 192.168.0.2)");
 		lblAddressDesc.setBounds(95, 140, 110, 16);
 		contentPane.add(lblAddressDesc);
 		
-		lblPortDesc = new JLabel("(пр. 8192)");
+		lblPortDesc = new JLabel("(Ex: 7777)");
 		lblPortDesc.setBounds(115, 209, 70, 16);
 		contentPane.add(lblPortDesc);
 		
