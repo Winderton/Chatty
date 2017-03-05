@@ -45,6 +45,9 @@ import com.winderton.messenger.net.Net;
 			console("Connection failed..");
 		}
 		createWindow();
+		
+		String connectionPacket = "/c/" + name;
+		net.send(connectionPacket.getBytes());
 		console("You are trying to connect to: " + address + ", port: " + port + ", user name: " + name );
  	}
  
@@ -124,6 +127,7 @@ import com.winderton.messenger.net.Net;
  		if (message.equals("")) return;
  		message = name + ": " + message;
 		console(message);
+		net.send(message.getBytes());
 		txtMessage.setText("");
  	}
  	
